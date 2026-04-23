@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qi6nSfqxC94=",
+  "success": true,
+  "projectFilePath": "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Domain\\Steelbay.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "teQqWgzyCAY=",
+  "success": true,
+  "projectFilePath": "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Infrastructure\\Steelbay.Infrastructure.Persistence\\Steelbay.Infrastructure.Persistence.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

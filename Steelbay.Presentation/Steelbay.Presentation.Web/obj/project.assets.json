@@ -1,0 +1,246 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "MediatR.Contracts/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MediatR.Contracts.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.Contracts.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.OpenApi/9.0.10": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.OpenApi": "1.6.17"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Microsoft.OpenApi/1.6.17": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Steelbay.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Steelbay.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Steelbay.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Steelbay.Application.dll": {}
+        }
+      },
+      "Steelbay.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "MediatR.Contracts": "2.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Steelbay.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Steelbay.Domain.dll": {}
+        }
+      },
+      "Steelbay.Infrastructure.Persistence/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Steelbay.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Steelbay.Infrastructure.Persistence.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Steelbay.Infrastructure.Persistence.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MediatR.Contracts/2.0.1": {
+      "sha512": "FYv95bNT4UwcNA+G/J1oX5OpRiSUxteXaUt2BJbRSdRNiIUNbggJF69wy6mnk2wYToaanpdXZdCwVylt96MpwQ==",
+      "type": "package",
+      "path": "mediatr.contracts/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gradient_128x128.png",
+        "lib/netstandard2.0/MediatR.Contracts.dll",
+        "lib/netstandard2.0/MediatR.Contracts.xml",
+        "mediatr.contracts.2.0.1.nupkg.sha512",
+        "mediatr.contracts.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.OpenApi/9.0.10": {
+      "sha512": "yAv5EDEi0Nkk75Vhxh6ppuXd/QIO8hzjGpAt/fGInMZWIX/mVwZ1IM50YFIWeLCVM8KDj0oFPQdcLeQ+9hEJsw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.openapi/9.0.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll",
+        "lib/net9.0/Microsoft.AspNetCore.OpenApi.xml",
+        "microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
+        "microsoft.aspnetcore.openapi.nuspec"
+      ]
+    },
+    "Microsoft.OpenApi/1.6.17": {
+      "sha512": "Le+kehlmrlQfuDFUt1zZ2dVwrhFQtKREdKBo+rexOwaCoYP0/qpgT9tLxCsZjsgR5Itk1UKPcbgO+FyaNid/bA==",
+      "type": "package",
+      "path": "microsoft.openapi/1.6.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/netstandard2.0/Microsoft.OpenApi.dll",
+        "lib/netstandard2.0/Microsoft.OpenApi.pdb",
+        "lib/netstandard2.0/Microsoft.OpenApi.xml",
+        "microsoft.openapi.1.6.17.nupkg.sha512",
+        "microsoft.openapi.nuspec"
+      ]
+    },
+    "Steelbay.Application/1.0.0": {
+      "type": "project",
+      "path": "../../Steelbay.Application/Steelbay.Application.csproj",
+      "msbuildProject": "../../Steelbay.Application/Steelbay.Application.csproj"
+    },
+    "Steelbay.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../Steelbay.Domain/Steelbay.Domain.csproj",
+      "msbuildProject": "../../Steelbay.Domain/Steelbay.Domain.csproj"
+    },
+    "Steelbay.Infrastructure.Persistence/1.0.0": {
+      "type": "project",
+      "path": "../../Steelbay.Infrastructure/Steelbay.Infrastructure.Persistence/Steelbay.Infrastructure.Persistence.csproj",
+      "msbuildProject": "../../Steelbay.Infrastructure/Steelbay.Infrastructure.Persistence/Steelbay.Infrastructure.Persistence.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "Microsoft.AspNetCore.OpenApi >= 9.0.10",
+      "Steelbay.Application >= 1.0.0",
+      "Steelbay.Infrastructure.Persistence >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Asus\\.nuget\\packages\\": {},
+    "D:\\Visual Studio Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Presentation\\Steelbay.Presentation.Web\\Steelbay.Presentation.Web.csproj",
+      "projectName": "Steelbay.Presentation.Web",
+      "projectPath": "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Presentation\\Steelbay.Presentation.Web\\Steelbay.Presentation.Web.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Presentation\\Steelbay.Presentation.Web\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Visual Studio Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Application\\Steelbay.Application.csproj": {
+              "projectPath": "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Application\\Steelbay.Application.csproj"
+            },
+            "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Infrastructure\\Steelbay.Infrastructure.Persistence\\Steelbay.Infrastructure.Persistence.csproj": {
+              "projectPath": "D:\\Storage\\Programming\\Apps\\Steelbay\\Steelbay.Infrastructure\\Steelbay.Infrastructure.Persistence\\Steelbay.Infrastructure.Persistence.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.OpenApi": {
+            "target": "Package",
+            "version": "[9.0.10, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
