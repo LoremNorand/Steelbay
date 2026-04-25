@@ -11,12 +11,12 @@ public static class AccountErrors
 {
     #region PUBLIC STATIC METHODS
 
-    public static Error CurrentStatusIsNull()
+    public static Error ActionRestricted(AccountAction action, AccountStatus currentStatus)
     {
-        var code = "account:current_status_is_null";
-        var description = "Current account status is null";
+        var code = "account:action_restricted";
+        var description = $"[{currentStatus}] account cannot execute [{action}]";
 
-        return Error.Create(code, description);
+        return Error.Create(code: code, description: description);
     }
 
 
@@ -25,7 +25,7 @@ public static class AccountErrors
         var code = "account:email_update_redundant";
         var description = $"Email [{email}] cannot be replaced with the same";
 
-        return Error.Create(code, description);
+        return Error.Create(code: code, description: description);
     }
 
 
@@ -34,7 +34,7 @@ public static class AccountErrors
         var code = "account:status_already_assigned";
         var description = $"The target status [{targetStatus}] has already been assigned to the account";
 
-        return Error.Create(code, description);
+        return Error.Create(code: code, description: description);
     }
 
 
@@ -43,7 +43,7 @@ public static class AccountErrors
         var code = "account:status_transition";
         var description = $"Cannot change account status from [{current}] to [{target}]";
 
-        return Error.Create(code, description);
+        return Error.Create(code: code, description: description);
     }
 
     #endregion

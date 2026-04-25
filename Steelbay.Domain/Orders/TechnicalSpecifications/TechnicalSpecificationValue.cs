@@ -40,7 +40,7 @@ public class TechnicalSpecificationValue : ValueObject
 
     #region PUBLIC STATIC METHODS
 
-    public static TechnicalSpecificationValue Set<T>(T value) where T : notnull => new(value, typeof(T));
+    public static TechnicalSpecificationValue Set<T>(T value) where T : notnull => new(value: value, type: typeof(T));
 
     #endregion
 

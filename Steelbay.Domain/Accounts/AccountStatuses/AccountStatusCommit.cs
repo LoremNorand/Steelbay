@@ -39,7 +39,7 @@ public class AccountStatusCommit : HistoryCommit
         var timestampUtc = DateTime.UtcNow;
         var handledReason = reason;
 
-        return new AccountStatusCommit(timestampUtc, status, handledReason);
+        return new AccountStatusCommit(createdAtUtc: timestampUtc, status: status, reason: handledReason);
     }
 
     #endregion

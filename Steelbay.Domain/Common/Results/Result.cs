@@ -29,9 +29,9 @@ public class Result
 
     #region PUBLIC STATIC METHODS
 
-    public static Result Failure(Error error) => new(false, error);
+    public static Result Failure(Error error) => new(isSuccess: false, error: error);
 
-    public static Result Success() => new(true, Error.None);
+    public static Result Success() => new(isSuccess: true, error: Error.None);
 
     #endregion
 }

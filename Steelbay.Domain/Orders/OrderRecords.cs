@@ -9,7 +9,7 @@ public record OrderId(Guid Value)
 {
     #region PUBLIC STATIC METHODS
 
-    public static OrderId Generate() => new(IdGenerator.NewId());
+    public static OrderId Generate() => new(Value: IdGenerator.NewId());
 
     #endregion
 }

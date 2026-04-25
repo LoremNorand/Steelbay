@@ -13,7 +13,7 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
 
     #region OPERATORS
 
-    public static bool operator ==(Entity<TId>? left, Entity<TId>? right) => Equals(left, right);
+    public static bool operator ==(Entity<TId>? left, Entity<TId>? right) => Equals(objA: left, objB: right);
 
     public static bool operator !=(Entity<TId>? left, Entity<TId>? right) => !(left == right);
 
@@ -41,9 +41,9 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
     public bool Equals(Entity<TId>? other)
     {
         if (other is null) return false;
-        if (ReferenceEquals(this, other)) return true;
+        if (ReferenceEquals(objA: this, objB: other)) return true;
 
-        return Id.Equals(other.Id);
+        return Id.Equals(obj: other.Id);
     }
 
     #endregion
@@ -55,7 +55,7 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>> where TId : notnull
 
     #region PUBLIC METHODS
 
-    public override bool Equals(object? obj) => obj is Entity<TId> other && Equals(other);
+    public override bool Equals(object? obj) => obj is Entity<TId> other && Equals(other: other);
 
     public override int GetHashCode() => Id.GetHashCode();
 

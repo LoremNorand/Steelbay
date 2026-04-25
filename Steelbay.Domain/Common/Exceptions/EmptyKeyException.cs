@@ -13,7 +13,7 @@ public class EmptyKeyException : DomainException
 
     #region CONSTRUCTORS
 
-    public EmptyKeyException(string key) : base($"Empty document path: [{key}]")
+    public EmptyKeyException(string key) : base(message: $"Empty document path: [{key}]")
     {
         Key = key;
     }

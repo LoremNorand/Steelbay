@@ -12,7 +12,7 @@ public record DomainEvent : IDomainEvent
 
     #region IDomainEvent
 
-    public EventId EventId { get; init; } = new(IdGenerator.NewId());
+    public EventId EventId { get; init; } = new(Value: IdGenerator.NewId());
     public DateTime OccurredOnUtc { get; init; } = DateTime.UtcNow;
 
     #endregion

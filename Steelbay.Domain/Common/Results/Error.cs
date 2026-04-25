@@ -22,7 +22,7 @@ public class Error : ValueObject
     public string Description { get; }
     public IReadOnlyDictionary<string, object> Metadata => _metadata.AsReadOnly();
 
-    public static Error None => Create(string.Empty, string.Empty);
+    public static Error None => Create(code: string.Empty, description: string.Empty);
 
     #endregion
 
@@ -46,7 +46,7 @@ public class Error : ValueObject
     #region PUBLIC STATIC METHODS
 
     public static Error Create(string code, string description, Dictionary<string, object>? metadata = null) =>
-        new(code, description, metadata);
+        new(code: code, description: description, metadata: metadata);
 
     #endregion
 
@@ -57,9 +57,9 @@ public class Error : ValueObject
 
     public Error WithContext(string key, object value)
     {
-        var newMetadata = new Dictionary<string, object>(_metadata) { [key] = value };
+        var newMetadata = new Dictionary<string, object>(dictionary: _metadata) { [key: key] = value };
 
-        return Create(Code, Description, newMetadata);
+        return Create(code: Code, description: Description, metadata: newMetadata);
     }
 
     #endregion

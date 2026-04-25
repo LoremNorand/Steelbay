@@ -49,7 +49,7 @@ public class Reason : ValueObject
 
         var id = IdGenerator.NewId();
 
-        return new Reason(id, preCode, metadata, preInitiator, isImplicit);
+        return new Reason(id: id, code: preCode, metadata: metadata, initiator: preInitiator, isImplicit: isImplicit);
     }
 
     #endregion

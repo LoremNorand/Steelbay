@@ -32,7 +32,7 @@ public class AccountStatusHistory : IHistory<AccountStatusCommit>
 
     public void Commit(AccountStatusCommit value)
     {
-        _history.Add(value);
+        _history.Add(item: value);
         Current = value;
     }
 

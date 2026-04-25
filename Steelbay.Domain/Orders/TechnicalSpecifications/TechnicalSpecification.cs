@@ -29,7 +29,7 @@ public class TechnicalSpecification : Entity<Guid>
 
     #region CONSTRUCTORS
 
-    private TechnicalSpecification(Guid id, Dictionary<string, TechnicalSpecificationValue> values) : base(id)
+    private TechnicalSpecification(Guid id, Dictionary<string, TechnicalSpecificationValue> values) : base(id: id)
     {
         _values = values;
     }
@@ -46,7 +46,7 @@ public class TechnicalSpecification : Entity<Guid>
         var valuesDictionary = values ?? new Dictionary<string, TechnicalSpecificationValue>();
         var id = IdGenerator.NewId();
 
-        return new TechnicalSpecification(id, valuesDictionary);
+        return new TechnicalSpecification(id: id, values: valuesDictionary);
     }
 
     #endregion
@@ -58,9 +58,9 @@ public class TechnicalSpecification : Entity<Guid>
 
     public Result Set<T>(string key, T value) where T : notnull
     {
-        _values.Remove(key);
+        _values.Remove(key: key);
 
-        _values.Add(key, TechnicalSpecificationValue.Set(value));
+        _values.Add(key: key, value: TechnicalSpecificationValue.Set(value: value));
 
         return Result.Success();
     }

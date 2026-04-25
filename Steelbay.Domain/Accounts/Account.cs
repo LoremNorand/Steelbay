@@ -14,7 +14,11 @@ public class Account : AggregateRoot<AccountId>
 
     public AccountStatus CurrentStatus { get; private set; }
 
+    public string DisplayName { get; private set; }
+
     public Email Email { get; private set; }
+
+    public PasswordHash PasswordHash { get; private set; }
 
     #endregion
 
@@ -23,11 +27,20 @@ public class Account : AggregateRoot<AccountId>
 
     #region CONSTRUCTORS
 
-    private Account(AccountId id, Email email) : base(id)
+#pragma warning disable CS8618
+    // EF CORE Private constructor
+    private Account() : base(id: null!)
+    { }
+#pragma warning restore CS8618
+
+
+    private Account(AccountId id, Email email, PasswordHash passwordHash, string displayName) : base(id: id)
     {
         Email = email;
         CurrentStatus = AccountStatus.Active;
-        AddDomainEvent(new AccountCreated(id));
+        PasswordHash = passwordHash;
+        DisplayName = displayName;
+        AddDomainEvent(domainEvent: new AccountCreated(AccountId: id));
     }
 
     #endregion
@@ -37,10 +50,10 @@ public class Account : AggregateRoot<AccountId>
 
     #region PUBLIC STATIC METHODS
 
-    public static Account Create(Email email)
+    public static Account Create(Email email, string displayName, PasswordHash passwordHash)
     {
         var id = AccountId.Generate();
-        var account = new Account(id, email);
+        var account = new Account(id: id, email: email, passwordHash: passwordHash, displayName: displayName);
 
         return account;
     }
@@ -55,10 +68,10 @@ public class Account : AggregateRoot<AccountId>
     public Result Ban(Reason reason, IAccountStatusPolicy policy)
     {
         var changedStatus = CurrentStatus;
-        var result = ChangeStatus(reason, policy, AccountStatus.Banned);
+        var result = ChangeStatus(reason: reason, policy: policy, targetStatus: AccountStatus.Banned);
 
         if (result.IsSuccess)
-            AddDomainEvent(new AccountBanned(Id, changedStatus));
+            AddDomainEvent(domainEvent: new AccountBanned(AccountId: Id, ChangedStatus: changedStatus));
 
         return result;
     }
@@ -67,10 +80,10 @@ public class Account : AggregateRoot<AccountId>
     public Result Delete(Reason reason, IAccountStatusPolicy policy)
     {
         var changedStatus = CurrentStatus;
-        var result = ChangeStatus(reason, policy, AccountStatus.Deleted);
+        var result = ChangeStatus(reason: reason, policy: policy, targetStatus: AccountStatus.Deleted);
 
         if (result.IsSuccess)
-            AddDomainEvent(new AccountDeleted(Id, changedStatus));
+            AddDomainEvent(domainEvent: new AccountDeleted(AccountId: Id, ChangedStatus: changedStatus));
 
         return result;
     }
@@ -79,10 +92,10 @@ public class Account : AggregateRoot<AccountId>
     public Result Restore(Reason reason, IAccountStatusPolicy policy)
     {
         var changedStatus = CurrentStatus;
-        var result = ChangeStatus(reason, policy, AccountStatus.Active);
+        var result = ChangeStatus(reason: reason, policy: policy, targetStatus: AccountStatus.Active);
 
         if (result.IsSuccess)
-            AddDomainEvent(new AccountRestored(Id, changedStatus));
+            AddDomainEvent(domainEvent: new AccountRestored(AccountId: Id, ChangedStatus: changedStatus));
 
         return result;
     }
@@ -91,26 +104,59 @@ public class Account : AggregateRoot<AccountId>
     public Result Suspect(Reason reason, IAccountStatusPolicy policy)
     {
         var changedStatus = CurrentStatus;
-        var result = ChangeStatus(reason, policy, AccountStatus.Suspicious);
+        var result = ChangeStatus(reason: reason, policy: policy, targetStatus: AccountStatus.Suspicious);
 
         if (result.IsSuccess)
-            AddDomainEvent(new AccountSuspected(Id, changedStatus));
+            AddDomainEvent(domainEvent: new AccountSuspected(AccountId: Id, ChangedStatus: changedStatus));
 
         return result;
     }
 
 
-    public Result UpdateEmail(Email newEmail, IAccountStatusPolicy policy)
+    public Result UpdateDisplayName(string newDisplayName, IAccountStatusPolicy policy)
     {
-        var checkResult = policy.CanExecute(CurrentStatus, AccountAction.UpdateEmail);
+        var oldDisplayName = DisplayName;
+        var checkResult = policy.CanExecute(current: CurrentStatus, action: AccountAction.UpdateDisplayName);
 
         if (checkResult.IsFailure)
-            return Result.Failure(checkResult.Error.WithContext("AccountId", Id));
+            return Result.Failure(error: checkResult.Error.WithContext(key: "AccountId", value: Id));
 
+        DisplayName = newDisplayName;
+
+        AddDomainEvent(
+            domainEvent: new AccountDisplayNameUpdated(AccountId: Id, OldDisplayName: oldDisplayName, NewDisplayName: newDisplayName));
+
+        return Result.Success();
+    }
+
+
+    public Result UpdateEmail(Email newEmail, IAccountStatusPolicy policy)
+    {
         var oldEmail = Email;
+        var checkResult = policy.CanExecute(current: CurrentStatus, action: AccountAction.UpdateEmail);
+
+        if (checkResult.IsFailure)
+            return Result.Failure(error: checkResult.Error.WithContext(key: "AccountId", value: Id));
+
         Email = newEmail;
 
-        AddDomainEvent(new AccountEmailUpdated(Id, oldEmail, newEmail));
+        AddDomainEvent(domainEvent: new AccountEmailUpdated(AccountId: Id, OldEmail: oldEmail, NewEmail: newEmail));
+
+        return Result.Success();
+    }
+
+
+    public Result UpdatePassword(PasswordHash newPasswordHash, IAccountStatusPolicy policy)
+    {
+        var changedPassword = newPasswordHash;
+        var checkResult = policy.CanExecute(current: CurrentStatus, action: AccountAction.UpdatePassword);
+
+        if (checkResult.IsFailure)
+            return Result.Failure(error: checkResult.Error.WithContext(key: "AccountId", value: Id));
+
+        PasswordHash = newPasswordHash;
+
+        AddDomainEvent(domainEvent: new AccountPasswordUpdated(AccountId: Id, OldPassword: changedPassword, NewPassword: newPasswordHash));
 
         return Result.Success();
     }
@@ -124,10 +170,10 @@ public class Account : AggregateRoot<AccountId>
 
     private Result ChangeStatus(Reason reason, IAccountStatusPolicy policy, AccountStatus targetStatus)
     {
-        var checkResult = policy.CanTransit(CurrentStatus, targetStatus);
+        var checkResult = policy.CanTransit(current: CurrentStatus, target: targetStatus);
 
         if (checkResult.IsFailure)
-            return Result.Failure(checkResult.Error.WithContext("AccountId", Id));
+            return Result.Failure(error: checkResult.Error.WithContext(key: "AccountId", value: Id));
 
         CurrentStatus = targetStatus;
 

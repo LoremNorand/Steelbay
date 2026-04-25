@@ -2,5 +2,7 @@ namespace Steelbay.Domain.Accounts;
 
 public enum AccountAction
 {
-    UpdateEmail
+    UpdateEmail,
+    UpdateDisplayName,
+    UpdatePassword
 }

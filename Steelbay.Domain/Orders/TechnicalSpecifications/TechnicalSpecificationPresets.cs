@@ -9,50 +9,50 @@ public static class TechnicalSpecificationPresets
 
     public static Dictionary<string, TechnicalSpecificationValue> Fence => new()
     {
-        { "Высота секции, м", TSV.Set(2.5d) },
-        { "Ширина секции (шаг столбов)", TSV.Set(3.0d) },
-        { "Тип фундамента столбов", TSV.Set("Точечное бетонирование") },
-        { "Подготовка под автоматику ворот", TSV.Set(true) },
-        { "Тип защитного покрытия", TSV.Set("Полимерно-порошковое") }
+        { "Высота секции, м", TSV.Set(value: 2.5d) },
+        { "Ширина секции (шаг столбов)", TSV.Set(value: 3.0d) },
+        { "Тип фундамента столбов", TSV.Set(value: "Точечное бетонирование") },
+        { "Подготовка под автоматику ворот", TSV.Set(value: true) },
+        { "Тип защитного покрытия", TSV.Set(value: "Полимерно-порошковое") }
     };
 
     public static Dictionary<string, TechnicalSpecificationValue> Hangar => new()
     {
-        { "Ширина пролёта, м", TSV.Set(18d) },
-        { "Шаг колонн, м", TSV.Set(6d) },
-        { "Высота, м", TSV.Set(7.5d) },
-        { "Снеговой регион", TSV.Set(3) },
-        { "Ветровой регион", TSV.Set(2) },
-        { "Утеплённое исполнение", TSV.Set(true) },
-        { "Степень огнестойкости", TSV.Set("IV Обычная") },
-        { "Расчетная нагрузка на пол, т/м²", TSV.Set(5d) }
+        { "Ширина пролёта, м", TSV.Set(value: 18d) },
+        { "Шаг колонн, м", TSV.Set(value: 6d) },
+        { "Высота, м", TSV.Set(value: 7.5d) },
+        { "Снеговой регион", TSV.Set(value: 3) },
+        { "Ветровой регион", TSV.Set(value: 2) },
+        { "Утеплённое исполнение", TSV.Set(value: true) },
+        { "Степень огнестойкости", TSV.Set(value: "IV Обычная") },
+        { "Расчетная нагрузка на пол, т/м²", TSV.Set(value: 5d) }
     };
 
     public static Dictionary<string, TechnicalSpecificationValue> ProfileSheet => new()
     {
-        { "Марка профиля", TSV.Set("НС-35") },
-        { "Рабочая ширина листа, мм", TSV.Set(1000) },
-        { "Длина реза (длина листа), м", TSV.Set(6d) },
-        { "Плотность цинкования, г/м²", TSV.Set(140) }
+        { "Марка профиля", TSV.Set(value: "НС-35") },
+        { "Рабочая ширина листа, мм", TSV.Set(value: 1000) },
+        { "Длина реза (длина листа), м", TSV.Set(value: 6d) },
+        { "Плотность цинкования, г/м²", TSV.Set(value: 140) }
     };
 
     public static Dictionary<string, TechnicalSpecificationValue> Roof => new()
     {
-        { "Угол наклона кровли, градусы", TSV.Set(15) },
-        { "Тип кровельной системы", TSV.Set("Двускатная") },
-        { "Антиконденсатное покрытие", TSV.Set(false) },
-        { "Наличие водосточной системы", TSV.Set(true) },
-        { "Количество рядов снегозадержателей", TSV.Set(1) }
+        { "Угол наклона кровли, градусы", TSV.Set(value: 15) },
+        { "Тип кровельной системы", TSV.Set(value: "Двускатная") },
+        { "Антиконденсатное покрытие", TSV.Set(value: false) },
+        { "Наличие водосточной системы", TSV.Set(value: true) },
+        { "Количество рядов снегозадержателей", TSV.Set(value: 1) }
     };
 
     public static Dictionary<string, TechnicalSpecificationValue> SandwichPanel => new()
     {
-        { "Тип утеплителя", TSV.Set("PIR (Пенополиизоцианурат)") },
-        { "Толщина панели, мм", TSV.Set(100) },
-        { "Толщина внешнего листа металла, мм", TSV.Set(0.5d) },
-        { "Цвет внешней стороны (RAL)", TSV.Set("RAL 9003") },
-        { "Цвет внутренней стороны (RAL)", TSV.Set("RAL 9002") },
-        { "Тип профилирования", TSV.Set("Микроволна") }
+        { "Тип утеплителя", TSV.Set(value: "PIR (Пенополиизоцианурат)") },
+        { "Толщина панели, мм", TSV.Set(value: 100) },
+        { "Толщина внешнего листа металла, мм", TSV.Set(value: 0.5d) },
+        { "Цвет внешней стороны (RAL)", TSV.Set(value: "RAL 9003") },
+        { "Цвет внутренней стороны (RAL)", TSV.Set(value: "RAL 9002") },
+        { "Тип профилирования", TSV.Set(value: "Микроволна") }
     };
 
     #endregion

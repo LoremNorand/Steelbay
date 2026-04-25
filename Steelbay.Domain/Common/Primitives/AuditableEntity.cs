@@ -9,7 +9,7 @@ public abstract class AuditableEntity<TId> : Entity<TId>, IAuditable where TId :
 {
     #region CONSTRUCTORS
 
-    protected AuditableEntity(TId id) : base(id)
+    protected AuditableEntity(TId id) : base(id: id)
     { }
 
     #endregion

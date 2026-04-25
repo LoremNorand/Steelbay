@@ -32,8 +32,8 @@ public class Price : ValueObject
 
     #region PUBLIC STATIC METHODS
 
-    public static Price Byn(double value) => new(value, "BYN");
-    public static Price Usd(double value) => new(value, "USD");
+    public static Price Byn(double value) => new(value: value, currency: "BYN");
+    public static Price Usd(double value) => new(value: value, currency: "USD");
 
     #endregion
 

@@ -6,7 +6,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
 
     #region IEquatable<ValueObject>
 
-    public bool Equals(ValueObject? other) => Equals((object)other!);
+    public bool Equals(ValueObject? other) => Equals(obj: (object)other!);
 
     #endregion
 
@@ -23,7 +23,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
 
         var valueObject = (ValueObject)obj;
 
-        return GetEqualityComponents().SequenceEqual(valueObject.GetEqualityComponents());
+        return GetEqualityComponents().SequenceEqual(second: valueObject.GetEqualityComponents());
     }
 
 
@@ -32,7 +32,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
         var hashCode = new HashCode();
 
         foreach (var valueObject in GetEqualityComponents())
-            hashCode.Add(valueObject.GetHashCode());
+            hashCode.Add(value: valueObject.GetHashCode());
 
         return hashCode.ToHashCode();
     }

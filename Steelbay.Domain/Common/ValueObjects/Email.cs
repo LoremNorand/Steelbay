@@ -11,7 +11,7 @@ public sealed class Email : ValueObject
     #region READONLY FIELDS
 
     private static readonly Regex _emailRegex = new(
-        @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        pattern: @"^[^@\s]+@[^@\s]+\.[^@\s]+$", options: RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     #endregion
 
@@ -52,15 +52,15 @@ public sealed class Email : ValueObject
 
     public static Email Create(string value)
     {
-        if (string.IsNullOrEmpty(value))
-            throw new ArgumentNullException(nameof(value));
+        if (string.IsNullOrEmpty(value: value))
+            throw new ArgumentNullException(paramName: nameof(value));
 
         var trimmed = value.Trim().ToLower();
 
-        if (!_emailRegex.IsMatch(trimmed))
-            throw new ArgumentException($"Invalid email: {value}");
+        if (!_emailRegex.IsMatch(input: trimmed))
+            throw new ArgumentException(message: $"Invalid email: {value}");
 
-        return new Email(trimmed);
+        return new Email(value: trimmed);
     }
 
     #endregion

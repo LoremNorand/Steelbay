@@ -9,7 +9,7 @@ public record EngagementId(Guid Value)
 {
     #region PUBLIC STATIC METHODS
 
-    public static EngagementId Generate() => new(IdGenerator.NewId());
+    public static EngagementId Generate() => new(Value: IdGenerator.NewId());
 
     #endregion
 }

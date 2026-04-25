@@ -21,6 +21,13 @@ public static class CodeGenerator
 
 
 
+    #region STATIC FIELDS
+
+    #endregion
+
+
+
+
     #region PUBLIC STATIC METHODS
 
     public static string Generate() => _generationMethod();
@@ -43,18 +50,18 @@ public static class CodeGenerator
         var now = DateTime.UtcNow;
 
         // YY (2) + '-' (1) + MM (2) + '-' (1) + XXXX (4) = 10 символов
-        return string.Create(10, now, (span, date) =>
+        return string.Create(length: 10, state: now, action: (span, date) =>
         {
             var year = date.Year % 100;
-            span[0] = (char)('0' + year / 10);
-            span[1] = (char)('0' + year % 10);
-            span[2] = '-';
+            span[index: 0] = (char)('0' + year / 10);
+            span[index: 1] = (char)('0' + year % 10);
+            span[index: 2] = '-';
             var month = date.Month;
-            span[3] = (char)('0' + month / 10);
-            span[4] = (char)('0' + month % 10);
-            span[5] = '-';
+            span[index: 3] = (char)('0' + month / 10);
+            span[index: 4] = (char)('0' + month % 10);
+            span[index: 5] = '-';
 
-            for (var i = 6; i < 10; i++) span[i] = Alphabet[_random.Next(Alphabet.Length)];
+            for (var i = 6; i < 10; i++) span[index: i] = Alphabet[index: _random.Next(maxValue: Alphabet.Length)];
         });
     }
 

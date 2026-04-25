@@ -27,7 +27,7 @@ public abstract class AggregateRoot<TId> : Entity<TId> where TId : notnull
 
     #region CONSTRUCTORS
 
-    protected AggregateRoot(TId id) : base(id)
+    protected AggregateRoot(TId id) : base(id: id)
     { }
 
     #endregion
@@ -46,7 +46,7 @@ public abstract class AggregateRoot<TId> : Entity<TId> where TId : notnull
 
     #region PROTECTED METHODS
 
-    protected void AddDomainEvent(IDomainEvent domainEvent) => _domainEvents.Add(domainEvent);
+    protected void AddDomainEvent(IDomainEvent domainEvent) => _domainEvents.Add(item: domainEvent);
 
     #endregion
 }

@@ -24,7 +24,7 @@ public class Order : AggregateRoot<OrderId>
 
     #region CONSTRUCTORS
 
-    private Order(OrderId id, string code, string name, string type, OrderStatus status, Specification specification) : base(id)
+    private Order(OrderId id, string code, string name, string type, OrderStatus status, Specification specification) : base(id: id)
     {
         Code = code;
         Name = name;
@@ -47,7 +47,7 @@ public class Order : AggregateRoot<OrderId>
         var specification = Specification.Create();
         var status = OrderStatus.Draft;
 
-        return new Order(id, code, name, type, status, specification);
+        return new Order(id: id, code: code, name: name, type: type, status: status, specification: specification);
     }
 
     #endregion

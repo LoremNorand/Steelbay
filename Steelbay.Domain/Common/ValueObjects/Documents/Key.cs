@@ -38,34 +38,34 @@ public class Key : ValueObject
 
     public static Key CreateDocument(string key)
     {
-        var extension = GetExtension(key);
+        var extension = GetExtension(key: key);
 
-        if (!ExtensionWhitelist.ForDocument.Contains(extension))
+        if (!ExtensionWhitelist.ForDocument.Contains(item: extension))
             throw new ArgumentException();
 
-        return new Key(key, extension, KeyType.Document);
+        return new Key(value: key, extension: extension, keyType: KeyType.Document);
     }
 
 
     public static Key CreateImage(string key)
     {
-        var extension = GetExtension(key);
+        var extension = GetExtension(key: key);
 
-        if (!ExtensionWhitelist.ForImage.Contains(extension))
+        if (!ExtensionWhitelist.ForImage.Contains(item: extension))
             throw new ArgumentException();
 
-        return new Key(key, extension, KeyType.Image);
+        return new Key(value: key, extension: extension, keyType: KeyType.Image);
     }
 
 
     public static Key CreateVideo(string key)
     {
-        var extension = GetExtension(key);
+        var extension = GetExtension(key: key);
 
-        if (!ExtensionWhitelist.ForVideo.Contains(extension))
+        if (!ExtensionWhitelist.ForVideo.Contains(item: extension))
             throw new ArgumentException();
 
-        return new Key(key, extension, KeyType.Video);
+        return new Key(value: key, extension: extension, keyType: KeyType.Video);
     }
 
     #endregion
@@ -90,12 +90,12 @@ public class Key : ValueObject
 
     private static string GetExtension(string key)
     {
-        var reg = new Regex(@"(\.\w+)\s*^", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-        var match = reg.Match(key);
+        var reg = new Regex(pattern: @"(\.\w+)\s*^", options: RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        var match = reg.Match(input: key);
 
-        if (match.Success) return match.Groups[1].Value;
+        if (match.Success) return match.Groups[groupnum: 1].Value;
 
-        throw new EmptyKeyException(key);
+        throw new EmptyKeyException(key: key);
     }
 
     #endregion

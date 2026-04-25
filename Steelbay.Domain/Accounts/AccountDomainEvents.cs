@@ -18,3 +18,7 @@ public record AccountRestored(AccountId AccountId, AccountStatus ChangedStatus) 
 public record AccountSuspected(AccountId AccountId, AccountStatus ChangedStatus) : DomainEvent;
 
 public record AccountEmailUpdated(AccountId AccountId, Email OldEmail, Email NewEmail) : DomainEvent;
+
+public record AccountPasswordUpdated(AccountId AccountId, PasswordHash OldPassword, PasswordHash NewPassword) : DomainEvent;
+
+public record AccountDisplayNameUpdated(AccountId AccountId, string OldDisplayName, string NewDisplayName) : DomainEvent;
