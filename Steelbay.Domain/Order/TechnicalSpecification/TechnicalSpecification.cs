@@ -1,5 +1,6 @@
 using Steelbay.Domain.Common.Primitives;
 using Steelbay.Domain.Common.Result;
+using Steelbay.Domain.Common.Util;
 
 
 
@@ -8,9 +9,9 @@ namespace Steelbay.Domain.Order.TechnicalSpecification;
 
 public class TechnicalSpecification : Entity<Guid>
 {
-    #region FIELDS
+    #region READONLY FIELDS
 
-    private Dictionary<string, TechnicalSpecificationValue> _values;
+    private readonly Dictionary<string, TechnicalSpecificationValue> _values;
 
     #endregion
 
@@ -28,8 +29,25 @@ public class TechnicalSpecification : Entity<Guid>
 
     #region CONSTRUCTORS
 
-    private TechnicalSpecification(Guid id) : base(id)
-    { }
+    private TechnicalSpecification(Guid id, Dictionary<string, TechnicalSpecificationValue> values) : base(id)
+    {
+        _values = values;
+    }
+
+    #endregion
+
+
+
+
+    #region PUBLIC STATIC METHODS
+
+    public static TechnicalSpecification Create(Dictionary<string, TechnicalSpecificationValue>? values = null)
+    {
+        var valuesDictionary = values ?? new Dictionary<string, TechnicalSpecificationValue>();
+        var id = IdGenerator.NewId();
+
+        return new TechnicalSpecification(id, valuesDictionary);
+    }
 
     #endregion
 
@@ -40,8 +58,7 @@ public class TechnicalSpecification : Entity<Guid>
 
     public Result Set<T>(string key, T value) where T : notnull
     {
-        if (_values.ContainsKey(key))
-            _values.Remove(key);
+        _values.Remove(key);
 
         _values.Add(key, TechnicalSpecificationValue.Set(value));
 
