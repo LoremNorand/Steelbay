@@ -1,5 +1,5 @@
 using MediatR;
-using Steelbay.Domain.Common.DomainEvent;
+using Steelbay.Domain.Common.DomainEvents;
 
 
 

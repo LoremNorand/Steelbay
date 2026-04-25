@@ -1,6 +1,6 @@
 using Steelbay.Domain.Common.Primitives;
-using Steelbay.Domain.Common.Result;
-using Steelbay.Domain.Common.Util;
+using Steelbay.Domain.Common.Results;
+using Steelbay.Domain.Common.Utils;
 
 
 
