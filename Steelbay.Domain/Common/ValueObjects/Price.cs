@@ -5,12 +5,45 @@ using Steelbay.Domain.Common.Primitives;
 
 namespace Steelbay.Domain.Common.ValueObjects;
 
-public class Price : ValueObject
+public sealed class Price : ValueObject, IComparable<Price>, IComparable
 {
     #region PUBLIC PROPERTIES
 
     public string Currency { get; }
     public double Value { get; }
+
+    #endregion
+
+
+
+
+    #region INTERFACE IMPLEMENTATIONS
+
+    #region IComparable<Price>
+
+    public int CompareTo(Price? other)
+    {
+        ArgumentNullException.ThrowIfNull(argument: other);
+
+        EnsureComparable(other: other);
+
+        return Value.CompareTo(other.Value);
+    }
+
+    #endregion
+
+
+    #region IComparable
+
+    public int CompareTo(object? obj)
+    {
+        if (obj is not Price price)
+            throw new ArgumentException(message: "Object must be a Price.", paramName: nameof(obj));
+
+        return CompareTo(other: price);
+    }
+
+    #endregion
 
     #endregion
 
@@ -70,6 +103,13 @@ public class Price : ValueObject
             throw new ArgumentOutOfRangeException(paramName: nameof(value), message: "Price cannot be negative.");
 
         return value;
+    }
+
+
+    private void EnsureComparable(Price other)
+    {
+        if (!string.Equals(a: Currency, b: other.Currency, comparisonType: StringComparison.Ordinal))
+            throw new InvalidOperationException(message: $"Cannot compare prices with different currencies: [{Currency}] and [{other.Currency}].");
     }
 
     #endregion

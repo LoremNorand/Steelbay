@@ -1,0 +1,13 @@
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\bin\Debug\net9.0\Steelbay.Domain.deps.json
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\bin\Debug\net9.0\Steelbay.Domain.dll
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\bin\Debug\net9.0\Steelbay.Domain.pdb
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\Steelbay.Domain.csproj.AssemblyReference.cache
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\Steelbay.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\Steelbay.Domain.AssemblyInfoInputs.cache
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\Steelbay.Domain.AssemblyInfo.cs
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\Steelbay.Domain.csproj.CoreCompileInputs.cache
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\Steelbay.Domain.sourcelink.json
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\Steelbay.Domain.dll
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\refint\Steelbay.Domain.dll
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\Steelbay.Domain.pdb
+D:\Storage\Programming\Apps\Steelbay\Steelbay.Domain\obj\Debug\net9.0\ref\Steelbay.Domain.dll
