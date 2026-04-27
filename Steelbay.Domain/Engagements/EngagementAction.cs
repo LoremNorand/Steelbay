@@ -4,5 +4,9 @@ public enum EngagementAction
 {
     AppendGallery,
     ReorderGallery,
-    ReduceGallery
+    ReduceGallery,
+    UpdateName,
+    UpdateDescription,
+    UpdatePrice,
+    UpdateVisibility
 }

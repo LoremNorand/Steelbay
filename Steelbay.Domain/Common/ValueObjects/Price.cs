@@ -19,6 +19,12 @@ public class Price : ValueObject
 
     #region CONSTRUCTORS
 
+    private Price()
+    {
+        Currency = null!;
+    }
+
+
     private Price(double value, string currency)
     {
         Value = value;
@@ -32,8 +38,8 @@ public class Price : ValueObject
 
     #region PUBLIC STATIC METHODS
 
-    public static Price Byn(double value) => new(value: value, currency: "BYN");
-    public static Price Usd(double value) => new(value: value, currency: "USD");
+    public static Price Byn(double value) => new(value: ValidateValue(value: value), currency: "BYN");
+    public static Price Usd(double value) => new(value: ValidateValue(value: value), currency: "USD");
 
     #endregion
 
@@ -42,10 +48,28 @@ public class Price : ValueObject
 
     #region PROTECTED METHODS
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Value;
         yield return Currency;
+    }
+
+    #endregion
+
+
+
+
+    #region PRIVATE METHODS
+
+    private static double ValidateValue(double value)
+    {
+        if (double.IsNaN(d: value) || double.IsInfinity(d: value))
+            throw new ArgumentOutOfRangeException(paramName: nameof(value), message: "Price must be a finite number.");
+
+        if (value < 0)
+            throw new ArgumentOutOfRangeException(paramName: nameof(value), message: "Price cannot be negative.");
+
+        return value;
     }
 
     #endregion

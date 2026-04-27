@@ -17,6 +17,16 @@ public abstract class HistoryCommit : ValueObject, IAuditMetadata
 
 
 
+    #region CONSTRUCTORS
+
+    protected HistoryCommit()
+    { }
+
+    #endregion
+
+
+
+
     #region INTERFACE IMPLEMENTATIONS
 
     #region IAuditMetadata

@@ -31,8 +31,8 @@ public abstract class ValueObject : IEquatable<ValueObject>
     {
         var hashCode = new HashCode();
 
-        foreach (var valueObject in GetEqualityComponents())
-            hashCode.Add(value: valueObject.GetHashCode());
+        foreach (var component in GetEqualityComponents())
+            hashCode.Add(value: component);
 
         return hashCode.ToHashCode();
     }
@@ -44,7 +44,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
 
     #region PROTECTED METHODS
 
-    protected abstract IEnumerable<object> GetEqualityComponents();
+    protected abstract IEnumerable<object?> GetEqualityComponents();
 
     #endregion
 }

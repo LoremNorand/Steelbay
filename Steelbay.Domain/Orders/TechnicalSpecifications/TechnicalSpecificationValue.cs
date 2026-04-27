@@ -5,11 +5,19 @@ using Steelbay.Domain.Common.Primitives;
 
 namespace Steelbay.Domain.Orders.TechnicalSpecifications;
 
-public class TechnicalSpecificationValue : ValueObject
+public sealed class TechnicalSpecificationValue : ValueObject
 {
     #region READONLY FIELDS
 
-    private readonly object _value;
+    private static readonly HashSet<Type> _supportedTypes =
+    [
+        typeof(string),
+        typeof(double),
+        typeof(int),
+        typeof(bool)
+    ];
+
+    private object _value;
 
     #endregion
 
@@ -27,6 +35,13 @@ public class TechnicalSpecificationValue : ValueObject
 
     #region CONSTRUCTORS
 
+    private TechnicalSpecificationValue()
+    {
+        _value = null!;
+        Type = null!;
+    }
+
+
     private TechnicalSpecificationValue(object value, Type type)
     {
         _value = value;
@@ -40,7 +55,16 @@ public class TechnicalSpecificationValue : ValueObject
 
     #region PUBLIC STATIC METHODS
 
-    public static TechnicalSpecificationValue Set<T>(T value) where T : notnull => new(value: value, type: typeof(T));
+    public static TechnicalSpecificationValue Set<T>(T value) where T : notnull
+    {
+        var type = typeof(T);
+
+        if (!_supportedTypes.Contains(item: type))
+            throw new ArgumentException(message: $"Technical specification value type [{type.Name}] is not supported.",
+                paramName: nameof(value));
+
+        return new TechnicalSpecificationValue(value: value, type: type);
+    }
 
     #endregion
 
@@ -49,7 +73,13 @@ public class TechnicalSpecificationValue : ValueObject
 
     #region PUBLIC METHODS
 
-    public T As<T>() => (T)_value;
+    public T As<T>()
+    {
+        if (typeof(T) != Type)
+            throw new InvalidCastException(message: $"Stored value type is [{Type.Name}], requested [{typeof(T).Name}].");
+
+        return (T)_value;
+    }
 
     #endregion
 
@@ -58,7 +88,7 @@ public class TechnicalSpecificationValue : ValueObject
 
     #region PROTECTED METHODS
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return _value;
         yield return Type;

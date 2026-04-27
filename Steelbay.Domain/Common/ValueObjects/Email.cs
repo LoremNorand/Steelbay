@@ -38,6 +38,12 @@ public sealed class Email : ValueObject
 
     #region CONSTRUCTORS
 
+    private Email()
+    {
+        Value = null!;
+    }
+
+
     private Email(string value)
     {
         Value = value;
@@ -52,8 +58,8 @@ public sealed class Email : ValueObject
 
     public static Email Create(string value)
     {
-        if (string.IsNullOrEmpty(value: value))
-            throw new ArgumentNullException(paramName: nameof(value));
+        if (string.IsNullOrWhiteSpace(value: value))
+            throw new ArgumentException(message: "Email cannot be empty.", paramName: nameof(value));
 
         var trimmed = value.Trim().ToLower();
 
@@ -70,7 +76,7 @@ public sealed class Email : ValueObject
 
     #region PROTECTED METHODS
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Value;
     }

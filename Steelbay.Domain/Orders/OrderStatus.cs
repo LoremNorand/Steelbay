@@ -7,5 +7,6 @@ public enum OrderStatus
     Procurement,
     Manufacturing,
     Assembly,
-    Closed
+    Closed,
+    Cancelled
 }

@@ -20,6 +20,12 @@ public class AccountStatusCommit : HistoryCommit
 
     #region CONSTRUCTORS
 
+    private AccountStatusCommit()
+    {
+        Reason = null!;
+    }
+
+
     protected AccountStatusCommit(DateTime createdAtUtc, AccountStatus status, Reason reason)
     {
         CreatedAtUtc = createdAtUtc;
@@ -36,6 +42,12 @@ public class AccountStatusCommit : HistoryCommit
 
     public static AccountStatusCommit Create(AccountStatus status, Reason reason)
     {
+        if (!Enum.IsDefined(value: status))
+            throw new ArgumentOutOfRangeException(paramName: nameof(status), actualValue: status, message: "Unknown account status.");
+
+        if (reason is null)
+            throw new ArgumentNullException(paramName: nameof(reason));
+
         var timestampUtc = DateTime.UtcNow;
         var handledReason = reason;
 
@@ -63,7 +75,7 @@ public class AccountStatusCommit : HistoryCommit
 
     #region PROTECTED METHODS
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object?> GetEqualityComponents()
     {
         yield return Status;
         yield return CreatedAtUtc;

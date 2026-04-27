@@ -7,15 +7,15 @@ using Steelbay.Domain.Common.ValueObjects;
 
 namespace Steelbay.Domain.Accounts;
 
-public record AccountBanned(AccountId AccountId, AccountStatus ChangedStatus) : DomainEvent;
+public record AccountBanned(AccountId AccountId, AccountStatus OldStatus, Reason Reason) : DomainEvent;
 
-public record AccountCreated(AccountId AccountId) : DomainEvent;
+public record AccountCreated(AccountId AccountId, Email Email) : DomainEvent;
 
-public record AccountDeleted(AccountId AccountId, AccountStatus ChangedStatus) : DomainEvent;
+public record AccountDeleted(AccountId AccountId, AccountStatus OldStatus, Reason Reason) : DomainEvent;
 
-public record AccountRestored(AccountId AccountId, AccountStatus ChangedStatus) : DomainEvent;
+public record AccountRestored(AccountId AccountId, AccountStatus OldStatus, Reason Reason) : DomainEvent;
 
-public record AccountSuspected(AccountId AccountId, AccountStatus ChangedStatus) : DomainEvent;
+public record AccountSuspected(AccountId AccountId, AccountStatus OldStatus, Reason Reason) : DomainEvent;
 
 public record AccountEmailUpdated(AccountId AccountId, Email OldEmail, Email NewEmail) : DomainEvent;
 
