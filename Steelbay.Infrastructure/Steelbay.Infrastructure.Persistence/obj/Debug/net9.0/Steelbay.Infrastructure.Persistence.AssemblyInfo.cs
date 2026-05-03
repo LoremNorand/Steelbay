@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Steelbay.Infrastructure.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49b381c41abe172f7ab434f8885392536f86f5ab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c20c9a259f3d4bcb2aa374961e98cfcdc3ff9832")]
 [assembly: System.Reflection.AssemblyProductAttribute("Steelbay.Infrastructure.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Steelbay.Infrastructure.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

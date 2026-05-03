@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Steelbay.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bf70bf6c7cb9a3a0da2201970fd08ae92ef5b65")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c20c9a259f3d4bcb2aa374961e98cfcdc3ff9832")]
 [assembly: System.Reflection.AssemblyProductAttribute("Steelbay.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Steelbay.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
